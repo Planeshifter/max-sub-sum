@@ -71,12 +71,12 @@ gtest_main.a : gtest-all.o gtest_main.o
 # gtest_main.a, depending on whether it defines its own main()
 # function.
 
-max-sub-sum : $(USER_DIR)/maxSum.cc $(USER_DIR)/maxSum.h $(GTEST_HEADERS)
+max-sub-sum.o : $(USER_DIR)/maxSum.cc $(USER_DIR)/maxSum.h $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/maxSum.cc
 
-max-sub-sum-tests : $(USER_DIR)/maxSum_unittest.cc \
+max-sub-sum-tests.o : $(USER_DIR)/maxSum_unittest.cc \
                      $(USER_DIR)/maxSum.h $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/maxSum_unittest.cc
 
-max-sub-sum-tests : max-sub-sum max-sub-sum-tests gtest_main.a
+max-sub-sum-tests : max-sub-sum.o max-sub-sum-tests.o gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
