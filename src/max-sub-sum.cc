@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "maxSum.h"
+#include "max-sub-sum.h"
 
 #define max(a, b) (((a) >= (b)) ? (a) : (b))
 
@@ -26,4 +26,5 @@ float maxSubSum(float *vec, int length){
   }
   return maxArr(&ret_vec[0], length);
 }
+
 
