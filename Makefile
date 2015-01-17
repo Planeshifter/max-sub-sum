@@ -29,7 +29,7 @@ CXXFLAGS += -g -Wall -Wextra -pthread
 
 # All tests produced by this Makefile.  Remember to add new tests you
 # created to the list.
-TESTS = maxSum_unittest
+TESTS = max-sub-sum-tests
 
 # All Google Test headers.  Usually you shouldn't change this
 # definition.
@@ -71,12 +71,12 @@ gtest_main.a : gtest-all.o gtest_main.o
 # gtest_main.a, depending on whether it defines its own main()
 # function.
 
-maxSum.o : $(USER_DIR)/maxSum.cc $(USER_DIR)/maxSum.h $(GTEST_HEADERS)
+max-sub-sum : $(USER_DIR)/maxSum.cc $(USER_DIR)/maxSum.h $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/maxSum.cc
 
-maxSum_unittest.o : $(USER_DIR)/maxSum_unittest.cc \
+max-sub-sum-tests : $(USER_DIR)/maxSum_unittest.cc \
                      $(USER_DIR)/maxSum.h $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/maxSum_unittest.cc
 
-maxSum_unittest : maxSum.o maxSum_unittest.o gtest_main.a
+max-sub-sum-tests : max-sub-sum max-sub-sum-tests gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
