@@ -13,11 +13,28 @@ Let us denote with S_i the maximum sub of the subectors ending at position i. Fr
 To build the project from source, first run the shell script `download.sh` to download the [Google C++ testing framework](https://code.google.com/p/googletest/). Then run 
 
 ```
-make
+make max-sub-sum-tests
+
 ```
+
+to compile the unit-tests and 
+
+```
+make max-sub-sum-cli
+```
+
+to build the command line application. 
 
 The executable file `max-sub-sum-test` runs the specified unit tests and prints the results. From the terminal, execute it via 
 
 ```
 ./max-sub-sum-tests 
 ```
+
+Similarly, 
+
+```
+./max-sub-sum-cli
+```
+
+will output the maximum length for an input vector. 
