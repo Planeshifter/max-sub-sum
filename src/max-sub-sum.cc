@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "max-sub-sum.h"
 
 #define max(a, b) (((a) >= (b)) ? (a) : (b))
@@ -16,13 +15,13 @@ float maxSubSum(float *vec, int length){
   float ret_vec[length];
   int i;
   for(i=0; i<length;i++){
-    float r_i; 
+    float r_i;
     if(i==0){
       r_i = max(0, vec[i]);
     } else {
       r_i = max(0, vec[i] + ret_vec[i-1]);
-    } 
-    ret_vec[i] = r_i;  
+    }
+    ret_vec[i] = r_i;
   }
   return maxArr(&ret_vec[0], length);
 }

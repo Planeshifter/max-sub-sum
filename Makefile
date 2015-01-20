@@ -74,9 +74,15 @@ gtest_main.a : gtest-all.o gtest_main.o
 max-sub-sum.o : $(USER_DIR)/max-sub-sum.cc $(USER_DIR)/max-sub-sum.h $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/max-sub-sum.cc
 
+main.o : $(USER_DIR)/main.cc $(USER_DIR)/max-sub-sum.h $(GTEST_HEADERS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/main.cc
+
 max-sub-sum-tests.o : $(USER_DIR)/max-sub-sum-tests.cc \
                      $(USER_DIR)/max-sub-sum.h $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/max-sub-sum-tests.cc
 
 max-sub-sum-tests : max-sub-sum.o max-sub-sum-tests.o gtest_main.a
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
+
+max-sub-sum-cli : max-sub-sum.o main.o
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
