@@ -14,7 +14,6 @@ To build the project from source, first run the shell script `download.sh` to do
 
 ```
 make max-sub-sum-tests
-
 ```
 
 to compile the unit-tests and 
